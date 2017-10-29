@@ -1,3 +1,62 @@
-body {
+html, body {
+    height: 100%;
+    padding: 20px;
+    background-color: paleturquoise;
+}
+
+.box{
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    background-color: ghostwhite;
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+}
+
+.contentRow {
+    margin-right: 0px;
+    margin-left: 0px;
+    height: 85%;
+    width: 100%;
+}
+
+.titleText {
+    height: 10%;
+    text-align: center;
     padding: 10px;
+}
+
+.footButton {
+    padding: 5px;
+    height: 5%;
+}
+
+.centerButton {
+    margin: auto;
+    display: block;
+}
+
+.maxSize {
+    height: 100%;
+    width: 100%;
+}
+
+.textArea {
+    height: 90%;
+    width: 100%;
+    resize: none;
+}
+
+.tabBar {
+    margin: 0;
+    padding: 10px;
+    height: 10%;
+    width: 100%;
+}
+
+.tabButton {
+    width: 110px;
 }

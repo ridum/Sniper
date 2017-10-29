@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script src="./js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">   
 </head>
+
 <body>
-<div id="main">
-    <div id="mainContent">
+    <div id="main">
+        <div id="mainContent">
+        </div>
+        <div class="titleText">
+            <h2>Sniper - cover letter generator</h2>
+        </div>
+        <div class="row contentRow">
+            <div class="col-md-6">
+                <div class="box img-rounded">
+                    <div class="tabBar row">
+                        <div class="col-sm-4">
+                            <button class="tabButton centerButton btn btn-md btn-info">Text</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-center"><h3>OR</h3></div>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="tabButton centerButton btn btn-md btn-warning">URL</button>
+                        </div>
+                    </div>
+                    <textarea class="textArea"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box img-rounded">
+                    <ul class="list-group">
+                        <li class="list-group-item">First item</li>
+                        <li class="list-group-item">Second item</li>
+                        <li class="list-group-item">Third item</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footButton"><button class="centerButton btn-lg btn-success">generate!</button></div>
     </div>
-</div>
 </body>
+
 </html>
