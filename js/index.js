@@ -1,3 +1,13 @@
+var isUrl = false;
+
+function pressUrlButton() {
+
+}
+
+function pressTextButton() {
+
+}
+
 $.ajaxPrefilter(function (options) {
     if (options.crossDomain && jQuery.support.cors) {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
