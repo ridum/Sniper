@@ -11,6 +11,7 @@ $.get(
     function (response) {
         document.getElementById("mainContent").innerHTML = response;
         console.log(document.getElementById("mainContent").innerText);
+        $("#mainContent").remove();
     });
 
 JSON.stringify({}) === '{}' // check if json object is null
