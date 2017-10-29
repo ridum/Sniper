@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     background-color: paleturquoise;
 }
 
@@ -45,7 +45,7 @@ html, body {
 }
 
 .textArea {
-    height: 90%;
+    height: 80%;
     width: 100%;
     resize: none;
 }
