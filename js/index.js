@@ -28,8 +28,10 @@ $.ajaxPrefilter(function (options) {
 })
 
 function wordMappinng(string, list) {
-    //filter all period
-    var words = string.replace(/[.]/g, '');
+    //filter all punctuation
+    //enhencement to handle +
+    var words = string.replace(/[.,?!$%\^&\*;:{}=\-_`~()]/g, ' ');
+    console.log(words);
 
     //convert into list
     var stringArray = words.split(/\s/);
@@ -65,7 +67,7 @@ $(function () {
                     var URLText = document.getElementById("mainContent").innerText.toLowerCase();
 
                     // remove the content to preserve local css
-                    $("#mainContent").remove();
+                    document.getElementById("mainContent").innerHTML = "";
 
                     //concert anything to lower case to compare
 
@@ -78,6 +80,7 @@ $(function () {
                     alert("cannot aceess the file, try use input column");
                 });
         } else {
+            console.log($("#pureText").val());
             var result = wordMappinng(input, lowerCaseKeyList);
             console.log(result);
         }
