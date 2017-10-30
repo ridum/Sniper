@@ -1,22 +1,22 @@
 var isUrl = false;
 
 function pressUrlButton() {
-    if(!isUrl) {
+    if (!isUrl) {
         isUrl = true;
         document.getElementById("pureText").style.display = "none";
         document.getElementById("urlText").style.display = "block";
-        $("#textButton").animate({fontSize: '1rem', opacity: '0.4'}, "slow");        
-        $("#urlButton").animate({fontSize: '1.2rem'}, "slow");
+        $("#textButton").animate({ fontSize: '1rem', opacity: '0.4' }, "slow");
+        $("#urlButton").animate({ fontSize: '1.2rem' }, "slow");
     }
 }
 
 function pressTextButton() {
-    if(isUrl) {
+    if (isUrl) {
         isUrl = false;
         document.getElementById("pureText").style.display = "block";
         document.getElementById("urlText").style.display = "none";
-        $("#textButton").animate({fontSize: '1.2rem'}, "slow");        
-        $("#urlButton").animate({fontSize: '1rem', opacity: '0.4'}, "slow");
+        $("#textButton").animate({ fontSize: '1.2rem' }, "slow");
+        $("#urlButton").animate({ fontSize: '1rem', opacity: '0.4' }, "slow");
     }
 }
 
@@ -31,7 +31,6 @@ function wordMappinng(string, list) {
     //filter all period
     var words = string.replace(/[.]/g, '');
 
-    console.log(list.indexOf('java'));
     //convert into list
     var stringArray = words.split(/\s/);
     var freqMap = {};
