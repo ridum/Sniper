@@ -29,40 +29,44 @@
                             <button id="textButton" class="tabButton centerButton btn btn-md btn-info" onclick="pressTextButton()">Text</button>
                         </div>
                         <div class="col-sm-4">
-                            <div class="text-center"><h3>OR</h3></div>
+                            <div class="text-center">
+                                <h3>OR</h3>
+                            </div>
                         </div>
                         <div class="col-sm-4">
                             <button id="urlButton" class="tabButton centerButton btn btn-md btn-warning" onclick="pressUrlButton()">URL</button>
                         </div>
                     </div>
-                    <textarea id="pureText" class="textArea form-control"></textarea>                    
+                    <textarea id="pureText" class="textArea form-control"></textarea>
                     <textarea id="urlText" class="textArea form-control" style="display:none;"></textarea>
                     <div class="footButton">
-                            <button class="centerButton btn-lg btn-success">analyze!</button>
+                        <button id="analyze_button" class="centerButton btn-lg btn-success">analyze!</button>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-md-6">
                 <div class="box img-rounded">
                     <ul id="skillList" class="list-group">
                         <li class="list-group-item">
                             <input placeholder="1st Skill Name" class="form-control"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>     
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
                         </li>
                         <li class="list-group-item">
                             <input placeholder="2nd Skill Name" class="form-control"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea> 
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
                         </li>
                         <li class="list-group-item">
                             <input placeholder="3rd Skill Name" class="form-control"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea> 
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footButton"><button class="centerButton btn-lg btn-danger">generate!</button></div>
+        <div class="footButton">
+            <button id="footButton" class="centerButton btn-lg btn-danger">generate!</button>
+        </div>
     </div>
 </body>
 
