@@ -29,7 +29,6 @@ $.ajaxPrefilter(function (options) {
 
 function wordMappinng(string, list) {
     //filter all punctuation
-    //TODO :enhencement to handle + but not ++ in c++
     var words = string.replace(/[.,?!$%\^&\*;:{}=\-_`~()]|\+[^\+]/g, ' ');
     console.log(words);
 
