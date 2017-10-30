@@ -1,11 +1,23 @@
 var isUrl = false;
 
 function pressUrlButton() {
-
+    if(!isUrl) {
+        isUrl = true;
+        document.getElementById("pureText").style.display = "none";
+        document.getElementById("urlText").style.display = "block";
+        $("#textButton").animate({fontSize: '1rem', opacity: '0.4'}, "slow");        
+        $("#urlButton").animate({fontSize: '1.2rem'}, "slow");
+    }
 }
 
 function pressTextButton() {
-
+    if(isUrl) {
+        isUrl = false;
+        document.getElementById("pureText").style.display = "block";
+        document.getElementById("urlText").style.display = "none";
+        $("#textButton").animate({fontSize: '1.2rem'}, "slow");        
+        $("#urlButton").animate({fontSize: '1rem', opacity: '0.4'}, "slow");
+    }
 }
 
 $.ajaxPrefilter(function (options) {
