@@ -1,17 +1,12 @@
 var isUrl = false;
-
+``
 function pressUrlButton() {
     if (!isUrl) {
         isUrl = true;
         document.getElementById("pureText").style.display = "none";
         document.getElementById("urlText").style.display = "block";
-<<<<<<< HEAD
-        $("#textButton").animate({ fontSize: '1rem', opacity: '0.4' }, "slow");
-        $("#urlButton").animate({ fontSize: '1.2rem' }, "slow");
-=======
-        $("#textButton").animate({fontSize: '1rem', opacity: '0.3'}, "slow");        
-        $("#urlButton").animate({fontSize: '1.2rem', opacity: '1'}, "slow");
->>>>>>> 8f535acd160b549512e43101f2fe86fe641bcc94
+        $("#textButton").animate({ fontSize: '1rem', opacity: '0.3' }, "slow");
+        $("#urlButton").animate({ fontSize: '1.2rem', opacity: '1' }, "slow");
     }
 }
 
@@ -20,13 +15,8 @@ function pressTextButton() {
         isUrl = false;
         document.getElementById("pureText").style.display = "block";
         document.getElementById("urlText").style.display = "none";
-<<<<<<< HEAD
-        $("#textButton").animate({ fontSize: '1.2rem' }, "slow");
-        $("#urlButton").animate({ fontSize: '1rem', opacity: '0.4' }, "slow");
-=======
-        $("#textButton").animate({fontSize: '1.2rem', opacity: '1'}, "slow");        
-        $("#urlButton").animate({fontSize: '1rem', opacity: '0.3'}, "slow");
->>>>>>> 8f535acd160b549512e43101f2fe86fe641bcc94
+        $("#textButton").animate({ fontSize: '1.2rem', opacity: '1' }, "slow");
+        $("#urlButton").animate({ fontSize: '1rem', opacity: '0.3' }, "slow");
     }
 }
 
