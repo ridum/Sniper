@@ -45,6 +45,7 @@ $(function () {
     var text;
 
     $("#analyze_button").click(function () {
+        var url = (isUrl) ? $("#urlText").val() : $("#pureText").val();
         $.get(
             url,
             function (response) {
