@@ -43,27 +43,31 @@ $(function () {
     var keyList = ["java", "c++", "javascript"];
     var url = 'https://www.glassdoor.ca/job-listing/ixp-intern-software-developer-sap-JV_IC2278756_KO0,29_KE30,33.htm?jl=2562254803&ctt=1509053712570';
     var text;
-    $.get(
-        url,
-        function (response) {
-            document.getElementById("mainContent").innerHTML = response;
 
-            //store the context
-            text = document.getElementById("mainContent").innerText.toLowerCase();
+    $("#analyze_button").click(function () {
+        $.get(
+            url,
+            function (response) {
+                document.getElementById("mainContent").innerHTML = response;
 
-            // remove the content to keep local css
-            $("#mainContent").remove();
+                //store the context
+                text = document.getElementById("mainContent").innerText.toLowerCase();
 
-            //concert anything to lower case to compare
-            var lowerCaseKeyList = keyList.map(function (x) {
-                return x.toLowerCase();
+                // remove the content to keep local css
+                $("#mainContent").remove();
+
+                //concert anything to lower case to compare
+                var lowerCaseKeyList = keyList.map(function (x) {
+                    return x.toLowerCase();
+                });
+                var result = wordMappinng(text, lowerCaseKeyList);
+                console.log(result);
+
+            }).done(function () {
+                console.log("parse success");
+            }).fail(function () {
+                alert("cannot aceess the file, try use input column");
             });
-            var result = wordMappinng(text, lowerCaseKeyList);
-            console.log(result);
+    });
 
-        }).done(function () {
-            console.log("parse success");
-        }).fail(function () {
-            alert("cannot aceess the file, try use input column");
-        });
 });
