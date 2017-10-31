@@ -11,7 +11,9 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/IOControl.js"></script>
 </head>
 
 <body>
@@ -39,7 +41,9 @@
                     </div>
                     <textarea id="pureText" class="textArea form-control"></textarea>
                     <textarea id="urlText" class="textArea form-control" style="display:none;"></textarea>
+                    <div id="chart_div"></div>
                     <div class="footButton">
+                        <input type="checkbox" id="default_list_indicator">Do you want to use default Computer Science list?</input>
                         <button id="analyze_button" class="centerButton btn-lg btn-success">analyze!</button>
                     </div>
                 </div>
