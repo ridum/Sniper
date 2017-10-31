@@ -75,3 +75,7 @@ html, body {
     font-size: 1rem;
     opacity: 0.3;
 }
+
+#skillGroup {
+    overflow-y: auto;
+}

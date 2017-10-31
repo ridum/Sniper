@@ -20,6 +20,24 @@ function pressTextButton() {
     }
 }
 
+function removeSkill(element){
+    var node = element.parentNode
+    $(node).fadeOut(500, ()=>{
+        node.parentNode.removeChild(node);
+        delete(node);
+    });
+    
+  }
+  
+  function createSkill() {
+    var list = document.createElement("li");
+    list.style.display = "none";
+    list.className = "list-group-item";
+    list.innerHTML="<input placeholder='Skill Name' class='form-control'><textarea placeholder='Skill Description' class='skillTextArea form-control' rows='4'></textarea><button class='btn-md btn-danger' onclick='removeSkill(this)'>delete</button>";
+    document.getElementById("skillList").appendChild(list);
+    $(list).fadeIn(1000);
+  }
+
 $.ajaxPrefilter(function (options) {
     if (options.crossDomain && jQuery.support.cors) {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');

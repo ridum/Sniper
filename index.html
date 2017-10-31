@@ -46,21 +46,25 @@
 
             </div>
             <div class="col-md-6">
-                <div class="box img-rounded">
+                <div id="skillGroup" class="box img-rounded">
                     <ul id="skillList" class="list-group">
                         <li class="list-group-item">
-                            <input placeholder="1st Skill Name" class="form-control"></input>
+                            <input placeholder="Skill Name" class="form-control"></input>
                             <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <button class="btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                         <li class="list-group-item">
-                            <input placeholder="2nd Skill Name" class="form-control"></input>
+                            <input placeholder="Skill Name" class="form-control"></input>
                             <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <button class="btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                         <li class="list-group-item">
-                            <input placeholder="3rd Skill Name" class="form-control"></input>
+                            <input placeholder="Skill Name" class="form-control"></input>
                             <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <button class="btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                     </ul>
+                    <button class="centerButton btn-lg btn-info" onclick="createSkill()">Create</button>
                 </div>
             </div>
         </div>
