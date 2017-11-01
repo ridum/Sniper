@@ -70,3 +70,20 @@ function getSkillList() {
         return false;
     }
 }
+
+function moveColumnToRight() {
+    document.getElementById("leftRow").className="col-md-8";
+    document.getElementById("rightRow").className="col-md-4";
+}
+
+function moveColumnToLeft() {
+    document.getElementById("leftRow").className="col-md-4";
+    document.getElementById("rightRow").className="col-md-8";
+}
+
+function resetColumn() {
+    document.getElementById("leftRow").className="col-md-6";
+    document.getElementById("rightRow").className="col-md-6";
+}
+
+
