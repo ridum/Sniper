@@ -42,7 +42,7 @@ function createSkill() {
     var list = document.createElement("li");
     list.style.display = "none";
     list.className = "list-group-item";
-    list.innerHTML = "<input placeholder='Skill Name' class='form-control skillName'><textarea placeholder='Skill Description' class='skillTextArea form-control' rows='4'></textarea><button class='btn-md btn-danger' onclick='removeSkill(this)'>delete</button>";
+    list.innerHTML = "<input placeholder='Skill Name' class='form-control skillName'><textarea placeholder='Skill Description' class='skillTextArea form-control' rows='4'></textarea><button class='btn btn-md btn-danger' onclick='removeSkill(this)'>delete</button>";
     document.getElementById("skillList").appendChild(list);
     $(list).fadeIn(1000);
 }
