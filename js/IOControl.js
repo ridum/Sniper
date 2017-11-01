@@ -54,6 +54,7 @@ function getSkillList() {
         if(empty) return false;
         return result;
     } else {
+        alert("Error: please create at least one skill");
         return false;
     }
 }
