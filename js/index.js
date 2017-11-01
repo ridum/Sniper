@@ -11,10 +11,10 @@ $.ajaxPrefilter(function (options) {
 function wordMappinng(string, list) {
     //filter all punctuation
     var words = string.replace(/[.,?!$%\^&\*;:{}=\-_`~()]|\+[^\+]/g, ' ');
-    console.log(words);
+    var wordsWithithPlus = words.replace(/\+/g, '++ ');
 
     //convert into list
-    var stringArray = words.split(/\s/);
+    var stringArray = wordsWithithPlus.split(/\s/);
     var freqMap = {};
 
     //initial each word count to be 0
@@ -32,12 +32,18 @@ function wordMappinng(string, list) {
     return freqMap;
 }
 
-function generateGraph(result) {
 
-}
 
 $(function () {
+    //initialize google charts
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(function () { Google_loaded = true; });
+
     $("#analyze_button").click(function () {
+
+
         var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
         var result;
         //concert anything to lower case to compare
