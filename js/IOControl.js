@@ -3,8 +3,14 @@ function pressUrlButton() {
         isUrl = true;
         document.getElementById("pureText").style.display = "none";
         document.getElementById("urlText").style.display = "block";
-        $("#textButton").animate({ fontSize: '1rem', opacity: '0.3' }, "slow");
-        $("#urlButton").animate({ fontSize: '1.2rem', opacity: '1' }, "slow");
+        $("#textButton").animate({
+            fontSize: '1rem',
+            opacity: '0.3'
+        }, "slow");
+        $("#urlButton").animate({
+            fontSize: '1.2rem',
+            opacity: '1'
+        }, "slow");
     }
 }
 
@@ -13,8 +19,14 @@ function pressTextButton() {
         isUrl = false;
         document.getElementById("pureText").style.display = "block";
         document.getElementById("urlText").style.display = "none";
-        $("#textButton").animate({ fontSize: '1.2rem', opacity: '1' }, "slow");
-        $("#urlButton").animate({ fontSize: '1rem', opacity: '0.3' }, "slow");
+        $("#textButton").animate({
+            fontSize: '1.2rem',
+            opacity: '1'
+        }, "slow");
+        $("#urlButton").animate({
+            fontSize: '1rem',
+            opacity: '0.3'
+        }, "slow");
     }
 }
 
@@ -22,7 +34,7 @@ function removeSkill(element) {
     var node = element.parentNode
     $(node).fadeOut(500, () => {
         node.parentNode.removeChild(node);
-        delete (node);
+        delete(node);
     });
 }
 
@@ -36,22 +48,22 @@ function createSkill() {
 }
 
 function getSkillList() {
-    if($("#skillList").children().length>0){
+    if ($("#skillList").children().length > 0) {
         let result = new Array();
         let empty = false;
-        $("#skillList").children().each( function(index) {
+        $("#skillList").children().each(function (index) {
             if ($(this).children(".skillName")[0].value === "" || $(this).children(".skillTextArea")[0].value === "") {
-                alert("Error: your Skill number " + (index + 1)  + " contains empty field(s)");
+                alert("Error: your Skill number " + (index + 1) + " contains empty field(s)");
                 empty = true;
                 return;
             }
-            result.push({   
-                id : index,
+            result.push({
+                id: index,
                 name: $(this).children(".skillName")[0].value,
                 descr: $(this).children(".skillTextArea")[0].value
             });
         });
-        if(empty) return false;
+        if (empty) return false;
         return result;
     } else {
         alert("Error: please create at least one skill");
