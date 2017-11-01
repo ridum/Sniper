@@ -23,6 +23,13 @@ html, body {
     width: 100%;
 }
 
+.contentRow > div {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
 .titleText {
     height: 10%;
     text-align: center;
