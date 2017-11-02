@@ -34,7 +34,7 @@ function removeSkill(element) {
     var node = element.parentNode
     $(node).fadeOut(500, () => {
         node.parentNode.removeChild(node);
-        delete(node);
+        delete (node);
     });
 }
 
@@ -88,11 +88,17 @@ function resetColumn() {
 
 function resetGraph() {
     $("#analyze_button").unbind("click");
-    $(chart_div).fadeOut(500, function(){
+    $(chart_div).fadeOut(500, function () {
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
         $("#analyze_button").click(analyzeClick);
         $("#analyze_button").removeClass("btn-danger").addClass("btn-success");
         $("#analyze_button").text("analyze!");
     });
+}
+function changeAnalyzeButtonToCloseButton() {
+    $("#analyze_button").unbind("click");
+    $("#analyze_button").click(resetGraph);
+    $("#analyze_button").removeClass("btn-success").addClass("btn-danger");
+    $("#analyze_button").text("close graph");
 }
