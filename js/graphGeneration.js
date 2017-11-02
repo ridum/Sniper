@@ -30,7 +30,5 @@ function generateGraph(result) {
         var chart = new google.visualization.ColumnChart(
             document.getElementById('chart_div'));
         chart.draw(data, options);
-        document.getElementById("main").addEventListener("mousedown",resetGraph);
-        document.getElementById("main").addEventListener("touchstart",resetGraph);
     }
 }

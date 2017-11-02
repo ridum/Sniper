@@ -87,10 +87,11 @@ function resetColumn() {
 }
 
 function resetGraph() {
+    $("#analyze_button").unbind("click");
     $(chart_div).fadeOut(1000, function(){
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
+        $("#analyze_button").click(analyzeClick);
+        $("#analyze_button").text("analyze!");
     });
-    document.getElementById("main").removeEventListener("mousedown",resetGraph);
-    document.getElementById("main").removeEventListener("touchstart",resetGraph);
 }

@@ -32,6 +32,41 @@ function wordMappinng(string, list) {
     return freqMap;
 }
 
+function analyzeClick() {
+    var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
+    var result;
+    //concert anything to lower case to compare
+    var lowerCaseKeyList = DEFAULT_KEY_LIST.map(function (x) {
+        return x.toLowerCase();
+    });
+
+    if (isUrl) {
+        $.get(
+            input,
+            function (response) {
+                document.getElementById("mainContent").innerHTML = response;
+
+                //store the context
+                var URLText = document.getElementById("mainContent").innerText.toLowerCase();
+
+                // remove the content to preserve local css
+                document.getElementById("mainContent").innerHTML = "";
+                result = wordMappinng(URLText, lowerCaseKeyList);
+                generateGraph(result);
+            }).done(function () {
+            console.log("parse success");
+        }).fail(function () {
+            alert("cannot aceess the website, try use input column");
+        });
+    } else {
+        result = wordMappinng(input, lowerCaseKeyList);
+        generateGraph(result);
+    }
+    $("#analyze_button").unbind("click");
+    $("#analyze_button").click(resetGraph);
+    $("#analyze_button").text("close graph");
+}
+
 
 
 $(function () {
@@ -39,40 +74,9 @@ $(function () {
     google.charts.load('current', {
         'packages': ['corechart']
     });
-    google.charts.setOnLoadCallback(function () { Google_loaded = true; });
-
-    $("#analyze_button").click(function () {
-
-
-        var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
-        var result;
-        //concert anything to lower case to compare
-        var lowerCaseKeyList = DEFAULT_KEY_LIST.map(function (x) {
-            return x.toLowerCase();
-        });
-
-        if (isUrl) {
-            $.get(
-                input,
-                function (response) {
-                    document.getElementById("mainContent").innerHTML = response;
-
-                    //store the context
-                    var URLText = document.getElementById("mainContent").innerText.toLowerCase();
-
-                    // remove the content to preserve local css
-                    document.getElementById("mainContent").innerHTML = "";
-                    result = wordMappinng(URLText, lowerCaseKeyList);
-                    generateGraph(result);
-                }).done(function () {
-                    console.log("parse success");
-                }).fail(function () {
-                    alert("cannot aceess the website, try use input column");
-                });
-        } else {
-            result = wordMappinng(input, lowerCaseKeyList);
-            generateGraph(result);
-        }
-
+    google.charts.setOnLoadCallback(function () {
+        Google_loaded = true;
     });
+
+    $("#analyze_button").click(analyzeClick);
 });
