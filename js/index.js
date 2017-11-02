@@ -55,7 +55,7 @@ function analyzeClick() {
                 result = wordMappinng(URLText, lowerCaseKeyList);
                 generateGraph(result);
             }).done(function () {
-                console.log("parse success");
+                changeAnalyzeButtonToCloseButton();
             }).fail(function () {
                 alert("cannot aceess the website, try use input column");
             });
@@ -63,8 +63,8 @@ function analyzeClick() {
         input = input.toLowerCase();
         result = wordMappinng(input, lowerCaseKeyList);
         generateGraph(result);
+        changeAnalyzeButtonToCloseButton();
     }
-    changeAnalyzeButtonToCloseButton();
 }
 
 $(function () {
