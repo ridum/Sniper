@@ -17,13 +17,14 @@ function generateGraph(result) {
             animation: { "startup": true, duration: 1500, easing: 'out' },
             legend: { position: "none" },
             vAxis: {
-                minValue: 10
+                //cannot have lower than 0 counts
+                viewWindow: { min: 0 }
             },
             hAxis: {
-                title: 'Frequency graph',
-                titleTextStyle: {
-                    fontSize: 20,
-                }
+                //slant text to fill in more keywords
+                slantedText: true,
+                //show every keyword
+                showTextEvery: 1
             },
         };
 

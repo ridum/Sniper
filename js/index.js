@@ -1,6 +1,7 @@
 var isUrl = false;
-const DEFAULT_KEY_LIST = ["java", "c++", "javascript"];
-var keylist;
+const DEFAULT_KEY_LIST = ["java", "c++", "javascript", "python", "c", "scala", "CSS", "html"];
+var keylist = [];
+
 $.ajaxPrefilter(function (options) {
     if (options.crossDomain && jQuery.support.cors) {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
@@ -34,12 +35,12 @@ function wordMappinng(string, list) {
 
 function analyzeClick() {
     var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
+    var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
     var result;
     //concert anything to lower case to compare
-    var lowerCaseKeyList = DEFAULT_KEY_LIST.map(function (x) {
+    var lowerCaseKeyList = list.map(function (x) {
         return x.toLowerCase();
     });
-
     if (isUrl) {
         $.get(
             input,
@@ -54,21 +55,17 @@ function analyzeClick() {
                 result = wordMappinng(URLText, lowerCaseKeyList);
                 generateGraph(result);
             }).done(function () {
-            console.log("parse success");
-        }).fail(function () {
-            alert("cannot aceess the website, try use input column");
-        });
+                console.log("parse success");
+            }).fail(function () {
+                alert("cannot aceess the website, try use input column");
+            });
     } else {
+        input = input.toLowerCase();
         result = wordMappinng(input, lowerCaseKeyList);
         generateGraph(result);
     }
-    $("#analyze_button").unbind("click");
-    $("#analyze_button").click(resetGraph);
-    $("#analyze_button").removeClass("btn-success").addClass("btn-danger");
-    $("#analyze_button").text("close graph");
+    changeAnalyzeButtonToCloseButton();
 }
-
-
 
 $(function () {
     //initialize google charts
@@ -78,6 +75,7 @@ $(function () {
     google.charts.setOnLoadCallback(function () {
         Google_loaded = true;
     });
+
 
     $("#analyze_button").click(analyzeClick);
 });
