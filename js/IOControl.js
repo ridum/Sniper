@@ -42,7 +42,7 @@ function createSkill() {
     var list = document.createElement("li");
     list.style.display = "none";
     list.className = "list-group-item";
-    list.innerHTML = "<input placeholder='Skill Name' class='form-control skillName'><textarea placeholder='Skill Description' class='skillTextArea form-control' rows='4'></textarea><button class='btn btn-md btn-danger' onclick='removeSkill(this)'>delete</button>";
+    list.innerHTML = "<input placeholder='Skill Name' class='form-control skillName' onfocus='moveColumnToLeft()' onfocusout='resetColumn()'><textarea placeholder='Skill Description' class='skillTextArea form-control' onfocus='moveColumnToLeft()' onfocusout='resetColumn()' rows='4'></textarea><button class='btn btn-md btn-danger' onclick='removeSkill(this)'>delete</button>";
     document.getElementById("skillList").appendChild(list);
     $(list).fadeIn(1000);
 }
@@ -72,18 +72,25 @@ function getSkillList() {
 }
 
 function moveColumnToRight() {
-    document.getElementById("leftRow").className="col-md-8";
-    document.getElementById("rightRow").className="col-md-4";
+    document.getElementById("leftRow").className = "col-md-8";
+    document.getElementById("rightRow").className = "col-md-4";
 }
 
 function moveColumnToLeft() {
-    document.getElementById("leftRow").className="col-md-4";
-    document.getElementById("rightRow").className="col-md-8";
+    document.getElementById("leftRow").className = "col-md-4";
+    document.getElementById("rightRow").className = "col-md-8";
 }
 
 function resetColumn() {
-    document.getElementById("leftRow").className="col-md-6";
-    document.getElementById("rightRow").className="col-md-6";
+    document.getElementById("leftRow").className = "col-md-6";
+    document.getElementById("rightRow").className = "col-md-6";
 }
 
-
+function resetGraph() {
+    $(chart_div).fadeOut(1000, function(){
+        document.getElementById("chart_div").innerHTML = "";
+        document.getElementById("chart_div").style.display = "block";
+    });
+    document.getElementById("main").removeEventListener("mousedown",resetGraph);
+    document.getElementById("main").removeEventListener("touchstart",resetGraph);
+}

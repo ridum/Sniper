@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <div id="chart_div"></div>
     <div id="main">
         <div id="mainContent">
         </div>
@@ -29,7 +30,7 @@
                 <div class="box img-rounded">
                     <div class="tabBar row">
                         <div class="col-sm-5">
-                            <button id="textButton" class="tabButton centerButton btn btn-md btn-info" onclick="pressTextButton()">Text</button>
+                            <button id="textButton" class="tabButton centerButton btn btn-md btn-info" onclick="pressTextButton()" onfocus="moveColumnToRight()" onfocusout="resetColumn()">Text</button>
                         </div>
                         <div class="col-sm-2">
                             <div class="text-center">
@@ -37,14 +38,13 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                            <button id="urlButton" class="tabButton centerButton btn btn-md btn-warning" onclick="pressUrlButton()">URL</button>
+                            <button id="urlButton" class="tabButton centerButton btn btn-md btn-warning" onclick="pressUrlButton()" onfocus="moveColumnToRight()" onfocusout="resetColumn()">URL</button>
                         </div>
                     </div>
-                    <textarea id="pureText" class="textArea form-control"></textarea>
-                    <textarea id="urlText" class="textArea form-control" style="display:none;"></textarea>
-                    <div id="chart_div"></div>
+                    <textarea id="pureText" onfocus="moveColumnToRight()" onfocusout="resetColumn()"  class="textArea form-control"></textarea>
+                    <textarea id="urlText" onfocus="moveColumnToRight()" onfocusout="resetColumn()" class="textArea form-control" style="display:none;"></textarea>
                     <div class="footButton">
-                        <input type="checkbox" id="default_list_indicator">Do you want to use default Computer Science list?</input>
+                        <input type="checkbox" id="default_list_indicator" onfocus="moveColumnToRight()" onfocusout="resetColumn()">Do you want to use default Computer Science list?</input>
                         <button id="analyze_button" class="centerButton btn btn-lg btn-success">analyze!</button>
                     </div>
                 </div>
@@ -54,18 +54,18 @@
                 <div id="skillGroup" class="box img-rounded">
                     <ul id="skillList" class="list-group">
                         <li class="list-group-item">
-                            <input placeholder="Skill Name" class="form-control skillName"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <input placeholder="Skill Name" class="form-control skillName" onfocus="moveColumnToLeft()" onfocusout="resetColumn()"></input>
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" onfocus="moveColumnToLeft()" onfocusout="resetColumn()" rows="4"></textarea>
                             <button class="btn btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                         <li class="list-group-item">
-                            <input placeholder="Skill Name" class="form-control skillName"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <input placeholder="Skill Name" class="form-control skillName" onfocus="moveColumnToLeft()" onfocusout="resetColumn()"></input>
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" onfocus="moveColumnToLeft()" onfocusout="resetColumn()" rows="4"></textarea>
                             <button class="btn btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                         <li class="list-group-item">
-                            <input placeholder="Skill Name" class="form-control skillName"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" rows="4"></textarea>
+                            <input placeholder="Skill Name" class="form-control skillName" onfocus="moveColumnToLeft()" onfocusout="resetColumn()"></input>
+                            <textarea placeholder="Skill Description" class="skillTextArea form-control" onfocus="moveColumnToLeft()" onfocusout="resetColumn()" rows="4"></textarea>
                             <button class="btn btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
                     </ul>

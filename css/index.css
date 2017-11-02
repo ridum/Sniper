@@ -38,7 +38,7 @@ html, body {
 
 .footButton {
     padding: 5px;
-    height: 5%;
+    height: 10%;
 }
 
 .centerButton {
@@ -52,7 +52,7 @@ html, body {
 }
 
 .textArea {
-    height: 80%;
+    height: 75%;
     width: 100%;
     resize: none;
 }
@@ -85,4 +85,14 @@ html, body {
 
 #skillGroup {
     overflow-y: auto;
+}
+
+#chart_div {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
 }
