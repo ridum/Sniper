@@ -14,7 +14,7 @@ function generateGraph(result) {
 
 
         var options = {
-            animation: { "startup": true, duration: 1500, easing: 'out' },
+            animation: { "startup": true, duration: 500, easing: 'out' },
             legend: { position: "none" },
             vAxis: {
                 //cannot have lower than 0 counts
