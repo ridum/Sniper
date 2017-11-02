@@ -31,5 +31,11 @@ function generateGraph(result) {
         var chart = new google.visualization.ColumnChart(
             document.getElementById('chart_div'));
         chart.draw(data, options);
+        document.getElementById('leftRow').addEventListener('webkitTransitionEnd', function() {
+            chart.draw(data, options);
+        }, false);
+        document.getElementById('leftRow').addEventListener('transitionend', function() {
+            chart.draw(data, options);
+        }, false);
     }
 }
