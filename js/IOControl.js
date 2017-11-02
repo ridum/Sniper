@@ -88,10 +88,11 @@ function resetColumn() {
 
 function resetGraph() {
     $("#analyze_button").unbind("click");
-    $(chart_div).fadeOut(1000, function(){
+    $(chart_div).fadeOut(500, function(){
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
         $("#analyze_button").click(analyzeClick);
+        $("#analyze_button").removeClass("btn-danger").addClass("btn-success");
         $("#analyze_button").text("analyze!");
     });
 }

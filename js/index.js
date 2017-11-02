@@ -64,6 +64,7 @@ function analyzeClick() {
     }
     $("#analyze_button").unbind("click");
     $("#analyze_button").click(resetGraph);
+    $("#analyze_button").removeClass("btn-success").addClass("btn-danger");
     $("#analyze_button").text("close graph");
 }
 
