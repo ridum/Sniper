@@ -26,7 +26,7 @@
         </div>
         <div class="row contentRow">
             <div id="leftRow" class="col-md-6">
-                <div id="chart_div"></div>
+                <div id="chart_div" tabindex="0" onfocus="moveColumnToRight()" onfocusout="resetColumn()"></div>
                 <div class="box img-rounded">
                     <div class="tabBar row">
                         <div class="col-sm-5">
@@ -47,7 +47,7 @@
                     <textarea id="urlText" onfocus="moveColumnToRight()" onfocusout="resetColumn()" class="textArea form-control" style="display:none;"></textarea>
                     <div class="footButton">
                         <input type="checkbox" id="default_list_indicator" onfocus="moveColumnToRight()" onfocusout="resetColumn()">Do you want to use default Computer Science list?</input>
-                        <button id="analyze_button" class="centerButton btn btn-lg btn-success">analyze!</button>
+                        <button id="analyze_button" class="centerButton btn btn-lg btn-success" onfocus="moveColumnToRight()" onfocusout="resetColumn()">analyze!</button>
                     </div>
                 </div>
 
