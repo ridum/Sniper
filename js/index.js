@@ -57,7 +57,7 @@ function analyzeClick() {
             }).done(function () {
                 changeAnalyzeButtonToCloseButton();
             }).fail(function () {
-                alert("cannot aceess the website, try use input column");
+                alert("cannot aceess the website, try use text input");
             });
     } else {
         input = input.toLowerCase();
