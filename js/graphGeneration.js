@@ -31,6 +31,7 @@ function generateGraph(result) {
         var chart = new google.visualization.ColumnChart(
             document.getElementById('chart_div'));
         chart.draw(data, options);
+        document.getElementById('chart_div').style.zIndex = 1;        
         document.getElementById('leftRow').addEventListener('webkitTransitionEnd', function() {
             chart.draw(data, options);
         }, false);

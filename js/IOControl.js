@@ -86,11 +86,12 @@ function resetColumn() {
     document.getElementById("rightRow").className = "col-md-6";
 }
 
-function resetGraph() {
+function removeGraph() {
     $("#analyze_button").unbind("click");
     $(chart_div).fadeOut(500, function () {
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
+        document.getElementById('chart_div').style.zIndex = -1;        
         $("#analyze_button").click(analyzeClick);
         $("#analyze_button").removeClass("btn-danger").addClass("btn-success");
         $("#analyze_button").text("analyze!");
@@ -98,7 +99,7 @@ function resetGraph() {
 }
 function changeAnalyzeButtonToCloseButton() {
     $("#analyze_button").unbind("click");
-    $("#analyze_button").click(resetGraph);
+    $("#analyze_button").click(removeGraph);
     $("#analyze_button").removeClass("btn-success").addClass("btn-danger");
     $("#analyze_button").text("close graph");
 }
