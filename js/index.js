@@ -34,6 +34,14 @@ function wordMappinng(string, list) {
 }
 
 function analyzeClick() {
+    var result = analyze();
+    if(result){
+        generateChart(result);
+        changeAnalyzeButtonToCloseButton();        
+    }
+}
+
+function analyze() {
     var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
 
     if (!document.getElementById('default_list_indicator').checked) {
@@ -62,29 +70,30 @@ function analyzeClick() {
 
                 // remove the content to preserve local css
                 document.getElementById("mainContent").innerHTML = "";
-                result = wordMappinng(URLText, lowerCaseKeyList);
-                generateChart(result);
+                result = wordMappinng(URLText, lowerCaseKeyList);  
             }).done(function () {
-                changeAnalyzeButtonToCloseButton();
+                return result;
             }).fail(function () {
                 alert("cannot aceess the website, try use text input");
+                return false;
             });
     } else {
         input = input.toLowerCase();
         result = wordMappinng(input, lowerCaseKeyList);
-        generateChart(result);
-        changeAnalyzeButtonToCloseButton();
+        return result;
     }
+
 }
 
 function generateClick() {
     document.getElementById("main").style.display = "none";
     document.getElementById("result").style.display = "block";
+
 }
 
 function backClick() {
-    document.getElementById("main").style.display = "block";
     document.getElementById("result").style.display = "none";
+    document.getElementById("main").style.display = "block";
 }
 
 $(function () {
