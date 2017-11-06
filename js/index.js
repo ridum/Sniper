@@ -107,8 +107,8 @@ function getSkillList() {
         let result = new Array();
         let empty = false;
         $("#skillList").children().each(function (index) {
-            if ($(this).children(".skillName")[0].value === "" || $(this).children(".skillTextArea")[0].value === "") {
-                alert("Error: your Skill number " + (index + 1) + " contains empty field(s)");
+            if ($(this).children(".skillName")[0].value === "") {
+                alert("Error: your Skill number " + (index + 1) + " have empty skill name");
                 empty = true;
                 return;
             }
