@@ -70,12 +70,6 @@
                                 rows="4"></textarea>
                             <button class="btn btn-md btn-danger" onclick="removeSkill(this)">delete</button>
                         </li>
-                        <li class="list-group-item">
-                            <input placeholder="Skill Name" class="form-control skillName" onfocus="moveColumnToLeft()" onfocusout="resetColumn()"></input>
-                            <textarea placeholder="Skill Description" class="skillTextArea form-control" onfocus="moveColumnToLeft()" onfocusout="resetColumn()"
-                                rows="4"></textarea>
-                            <button class="btn btn-md btn-danger" onclick="removeSkill(this)">delete</button>
-                        </li>
                     </ul>
                     <button class="centerButton btn btn-lg btn-info" onclick="createSkill()">Create</button>
                 </div>
@@ -90,6 +84,7 @@
             <button id="back_button" class="leftButton btn btn-md btn-danger">back</button>
             <h2>Sniper - your cover letter:</h2>
         </div>
+        <div id="resultText" class="resultText"></div>
     </div>
 </body>
 
