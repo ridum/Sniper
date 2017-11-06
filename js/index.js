@@ -34,16 +34,21 @@ function wordMappinng(string, list) {
 }
 
 function analyzeClick() {
-    var result = analyze();
-    if(result){
-        generateChart(result);
-        changeAnalyzeButtonToCloseButton();        
-    }
+    analyze().then((result) => {
+        console.log("get here");
+        console.log(result);
+        if (result) {
+            generateChart(result);
+            changeAnalyzeButtonToCloseButton();
+        }
+    });
+
 }
 
-function analyze() {
+async function analyze() {
     var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
 
+    //TODO handle error case
     if (!document.getElementById('default_list_indicator').checked) {
         keylist = [];
         var skillArray = getSkillList();
@@ -70,9 +75,7 @@ function analyze() {
 
                 // remove the content to preserve local css
                 document.getElementById("mainContent").innerHTML = "";
-                result = wordMappinng(URLText, lowerCaseKeyList);  
-            }).done(function () {
-                return result;
+                result = wordMappinng(URLText, lowerCaseKeyList);
             }).fail(function () {
                 alert("cannot aceess the website, try use text input");
                 return false;
@@ -80,9 +83,32 @@ function analyze() {
     } else {
         input = input.toLowerCase();
         result = wordMappinng(input, lowerCaseKeyList);
-        return result;
     }
+    return result;
+}
 
+function getSkillList() {
+    if ($("#skillList").children().length > 0) {
+        let result = new Array();
+        let empty = false;
+        $("#skillList").children().each(function (index) {
+            if ($(this).children(".skillName")[0].value === "") {
+                alert("Error: your Skill number " + (index + 1) + " have empty skill name");
+                empty = true;
+                return;
+            }
+            result.push({
+                id: index,
+                name: $(this).children(".skillName")[0].value,
+                descr: $(this).children(".skillTextArea")[0].value
+            });
+        });
+        if (empty) return false;
+        return result;
+    } else {
+        alert("Error: please create at least one skill");
+        return false;
+    }
 }
 
 function generateClick() {
@@ -110,27 +136,3 @@ $(function () {
     $("#generate_button").click(generateClick);
     $("#back_button").click(backClick);
 });
-
-function getSkillList() {
-    if ($("#skillList").children().length > 0) {
-        let result = new Array();
-        let empty = false;
-        $("#skillList").children().each(function (index) {
-            if ($(this).children(".skillName")[0].value === "") {
-                alert("Error: your Skill number " + (index + 1) + " have empty skill name");
-                empty = true;
-                return;
-            }
-            result.push({
-                id: index,
-                name: $(this).children(".skillName")[0].value,
-                descr: $(this).children(".skillTextArea")[0].value
-            });
-        });
-        if (empty) return false;
-        return result;
-    } else {
-        alert("Error: please create at least one skill");
-        return false;
-    }
-}
