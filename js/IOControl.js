@@ -47,30 +47,6 @@ function createSkill() {
     $(list).fadeIn(1000);
 }
 
-function getSkillList() {
-    if ($("#skillList").children().length > 0) {
-        let result = new Array();
-        let empty = false;
-        $("#skillList").children().each(function (index) {
-            if ($(this).children(".skillName")[0].value === "" || $(this).children(".skillTextArea")[0].value === "") {
-                alert("Error: your Skill number " + (index + 1) + " contains empty field(s)");
-                empty = true;
-                return;
-            }
-            result.push({
-                id: index,
-                name: $(this).children(".skillName")[0].value,
-                descr: $(this).children(".skillTextArea")[0].value
-            });
-        });
-        if (empty) return false;
-        return result;
-    } else {
-        alert("Error: please create at least one skill");
-        return false;
-    }
-}
-
 function moveColumnToRight() {
     document.getElementById("leftRow").className = "col-md-8";
     document.getElementById("rightRow").className = "col-md-4";
