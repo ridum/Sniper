@@ -37,6 +37,7 @@ function analyzeClick() {
     var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
 
     if (!document.getElementById('default_list_indicator').checked) {
+        keylist = [];
         var skillArray = getSkillList();
         skillArray.forEach((ele)=>{
             keylist.push(ele.name);
@@ -76,6 +77,16 @@ function analyzeClick() {
     }
 }
 
+function generateClick() {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("result").style.display = "block";
+}
+
+function backClick() {
+    document.getElementById("main").style.display = "block";
+    document.getElementById("result").style.display = "none";
+}
+
 $(function () {
     //initialize google charts
     google.charts.load('current', {
@@ -87,6 +98,8 @@ $(function () {
 
 
     $("#analyze_button").click(analyzeClick);
+    $("#generate_button").click(generateClick);
+    $("#back_button").click(backClick);
 });
 
 function getSkillList() {
