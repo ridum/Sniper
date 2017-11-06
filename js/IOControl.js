@@ -62,7 +62,7 @@ function resetColumn() {
     document.getElementById("rightRow").className = "col-md-6";
 }
 
-function removechart() {
+function removeChart() {
     $("#analyze_button").unbind("click");
 
     $(chart_div).fadeOut(500, function () {
@@ -76,7 +76,7 @@ function removechart() {
 }
 function changeAnalyzeButtonToCloseButton() {
     $("#analyze_button").unbind("click");
-    $("#analyze_button").click(removechart);
+    $("#analyze_button").click(removeChart);
     $("#analyze_button").removeClass("btn-success").addClass("btn-danger");
     $("#analyze_button").text("close chart");
 }
