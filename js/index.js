@@ -39,13 +39,13 @@ function analyzeClick() {
     if (!document.getElementById('default_list_indicator').checked) {
         keylist = [];
         var skillArray = getSkillList();
-        skillArray.forEach((ele)=>{
+        skillArray.forEach((ele) => {
             keylist.push(ele.name);
         })
     }
 
     var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
-    
+
     var result;
     //concert anything to lower case to compare
     var lowerCaseKeyList = list.map(function (x) {
@@ -63,7 +63,7 @@ function analyzeClick() {
                 // remove the content to preserve local css
                 document.getElementById("mainContent").innerHTML = "";
                 result = wordMappinng(URLText, lowerCaseKeyList);
-                generateGraph(result);
+                generateChart(result);
             }).done(function () {
                 changeAnalyzeButtonToCloseButton();
             }).fail(function () {
@@ -72,7 +72,7 @@ function analyzeClick() {
     } else {
         input = input.toLowerCase();
         result = wordMappinng(input, lowerCaseKeyList);
-        generateGraph(result);
+        generateChart(result);
         changeAnalyzeButtonToCloseButton();
     }
 }

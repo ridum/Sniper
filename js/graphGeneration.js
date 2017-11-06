@@ -1,6 +1,6 @@
 var Google_loaded = false;
 var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-//graph option
+//Chart option
 var options = {
     animation: { "startup": true, duration: 500, easing: 'out' },
     legend: { position: "none" },
@@ -16,7 +16,7 @@ var options = {
     },
 };
 
-function generateGraph(result) {
+function generateChart(result) {
     if (Google_loaded) {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Key words');
@@ -29,13 +29,6 @@ function generateGraph(result) {
             data.addRow(row);
         }
         chart.draw(data, options);
-
-        document.getElementById('chart_div').style.zIndex = 1;
-        document.getElementById('leftRow').addEventListener('webkitTransitionEnd', function () {
-            chart.draw(data, options);
-        }, false);
-        document.getElementById('leftRow').addEventListener('transitionend', function () {
-            chart.draw(data, options);
-        }, false);
+        showChart(data);
     }
 }
