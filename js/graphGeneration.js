@@ -1,5 +1,4 @@
 var Google_loaded = false;
-var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 //Chart option
 var options = {
     animation: { "startup": true, duration: 500, easing: 'out' },
@@ -17,6 +16,7 @@ var options = {
 };
 
 function generateChart(result) {
+
     if (Google_loaded) {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Key words');
@@ -28,7 +28,8 @@ function generateChart(result) {
             row.push(result[key]);
             data.addRow(row);
         }
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-        showChart(data);
+        showChart(chart, data);
     }
 }

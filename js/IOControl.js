@@ -81,7 +81,7 @@ function changeAnalyzeButtonToCloseButton() {
     $("#analyze_button").text("close chart");
 }
 
-function showChart(data) {
+function showChart(chart, data) {
     document.getElementById('chart_div').style.zIndex = 1;
     document.getElementById('leftRow').addEventListener('webkitTransitionEnd', function () {
         chart.draw(data, options);
