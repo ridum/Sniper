@@ -69,7 +69,7 @@ function removeChart() {
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
         document.getElementById('chart_div').style.zIndex = -1;
-        $("#analyze_button").click(analyzeClick);
+        $("#analyze_button").click(analyze('analyze'));
         $("#analyze_button").removeClass("btn-danger").addClass("btn-success");
         $("#analyze_button").text("analyze!");
     });

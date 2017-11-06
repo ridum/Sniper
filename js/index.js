@@ -33,58 +33,59 @@ function wordMappinng(string, list) {
     return freqMap;
 }
 
-function analyzeClick() {
-    analyze().then((result) => {
-        console.log("get here");
-        console.log(result);
-        if (result) {
-            generateChart(result);
-            changeAnalyzeButtonToCloseButton();
+var analyze = function (type) {
+    return function () {
+        var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
+        //TODO handle error case
+        if (!document.getElementById('default_list_indicator').checked) {
+            keylist = [];
+            var skillArray = getSkillList();
+            skillArray.forEach((ele) => {
+                keylist.push(ele.name);
+            })
         }
-    });
 
-}
+        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
 
-async function analyze() {
-    var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
+        var result;
+        //concert anything to lower case to compare
+        var lowerCaseKeyList = list.map(function (x) {
+            return x.toLowerCase();
+        });
+        if (isUrl) {
+            $.get(
+                input,
+                function (response) {
+                    document.getElementById("mainContent").innerHTML = response;
 
-    //TODO handle error case
-    if (!document.getElementById('default_list_indicator').checked) {
-        keylist = [];
-        var skillArray = getSkillList();
-        skillArray.forEach((ele) => {
-            keylist.push(ele.name);
-        })
+                    //store the context
+                    var URLText = document.getElementById("mainContent").innerText.toLowerCase();
+
+                    // remove the content to preserve local css
+                    document.getElementById("mainContent").innerHTML = "";
+                    result = wordMappinng(URLText, lowerCaseKeyList);
+                }).done(function () {
+                    if (type == "analyze") {
+                        generateChart(result);
+                        changeAnalyzeButtonToCloseButton();
+                    } else {
+                        alert("you clicked generated button!");
+                    }
+                }).fail(function () {
+                    alert("cannot aceess the website, try use text input");
+                });
+        } else {
+            input = input.toLowerCase();
+            result = wordMappinng(input, lowerCaseKeyList);
+            if (type == "analyze") {
+                generateChart(result);
+                changeAnalyzeButtonToCloseButton();
+            } else {
+                alert("you clicked generated button!");
+            }
+        }
+
     }
-
-    var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
-
-    var result;
-    //concert anything to lower case to compare
-    var lowerCaseKeyList = list.map(function (x) {
-        return x.toLowerCase();
-    });
-    if (isUrl) {
-        $.get(
-            input,
-            function (response) {
-                document.getElementById("mainContent").innerHTML = response;
-
-                //store the context
-                var URLText = document.getElementById("mainContent").innerText.toLowerCase();
-
-                // remove the content to preserve local css
-                document.getElementById("mainContent").innerHTML = "";
-                result = wordMappinng(URLText, lowerCaseKeyList);
-            }).fail(function () {
-                alert("cannot aceess the website, try use text input");
-                return false;
-            });
-    } else {
-        input = input.toLowerCase();
-        result = wordMappinng(input, lowerCaseKeyList);
-    }
-    return result;
 }
 
 function getSkillList() {
@@ -132,7 +133,7 @@ $(function () {
     });
 
 
-    $("#analyze_button").click(analyzeClick);
-    $("#generate_button").click(generateClick);
+    $("#analyze_button").click(analyze('analyze'));
+    $("#generate_button").click(analyze('generate'));
     $("#back_button").click(backClick);
 });
