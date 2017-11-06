@@ -36,16 +36,10 @@ function wordMappinng(string, list) {
 var analyze = function (type) {
     return function () {
         var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
-        //TODO handle error case
-        if (!document.getElementById('default_list_indicator').checked) {
-            keylist = [];
-            var skillArray = getSkillList();
-            skillArray.forEach((ele) => {
-                keylist.push(ele.name);
-            })
-        }
 
-        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
+        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList();
+
+        if (!list) return;
 
         var result;
         //concert anything to lower case to compare
@@ -92,7 +86,7 @@ function representResult(type, result) {
 
 function getSkillList() {
     if ($("#skillList").children().length > 0) {
-        let result = new Array();
+        let result = [];
         let empty = false;
         $("#skillList").children().each(function (index) {
             if ($(this).children(".skillName")[0].value === "") {
