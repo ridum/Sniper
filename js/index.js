@@ -35,7 +35,17 @@ function wordMappinng(string, list) {
 
 function analyzeClick() {
     var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
+
+    if (!document.getElementById('default_list_indicator').checked) {
+        keylist = [];
+        var skillArray = getSkillList();
+        skillArray.forEach((ele)=>{
+            keylist.push(ele.name);
+        })
+    }
+
     var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : keylist;
+    
     var result;
     //concert anything to lower case to compare
     var lowerCaseKeyList = list.map(function (x) {
@@ -67,6 +77,16 @@ function analyzeClick() {
     }
 }
 
+function generateClick() {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("result").style.display = "block";
+}
+
+function backClick() {
+    document.getElementById("main").style.display = "block";
+    document.getElementById("result").style.display = "none";
+}
+
 $(function () {
     //initialize google charts
     google.charts.load('current', {
@@ -78,4 +98,30 @@ $(function () {
 
 
     $("#analyze_button").click(analyzeClick);
+    $("#generate_button").click(generateClick);
+    $("#back_button").click(backClick);
 });
+
+function getSkillList() {
+    if ($("#skillList").children().length > 0) {
+        let result = new Array();
+        let empty = false;
+        $("#skillList").children().each(function (index) {
+            if ($(this).children(".skillName")[0].value === "" || $(this).children(".skillTextArea")[0].value === "") {
+                alert("Error: your Skill number " + (index + 1) + " contains empty field(s)");
+                empty = true;
+                return;
+            }
+            result.push({
+                id: index,
+                name: $(this).children(".skillName")[0].value,
+                descr: $(this).children(".skillTextArea")[0].value
+            });
+        });
+        if (empty) return false;
+        return result;
+    } else {
+        alert("Error: please create at least one skill");
+        return false;
+    }
+}
