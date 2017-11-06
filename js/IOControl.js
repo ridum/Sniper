@@ -69,7 +69,7 @@ function removeChart() {
         document.getElementById("chart_div").innerHTML = "";
         document.getElementById("chart_div").style.display = "block";
         document.getElementById('chart_div').style.zIndex = -1;
-        $("#analyze_button").click(analyze('analyze'));
+        $("#analyze_button").click(analyze('chart'));
         $("#analyze_button").removeClass("btn-danger").addClass("btn-success");
         $("#analyze_button").text("analyze!");
     });
@@ -89,4 +89,15 @@ function showChart(chart, data) {
     document.getElementById('leftRow').addEventListener('transitionend', function () {
         chart.draw(data, options);
     }, false);
+}
+
+function clickGenerateButton() {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("result").style.display = "block";
+
+}
+
+function backClick() {
+    document.getElementById("result").style.display = "none";
+    document.getElementById("main").style.display = "block";
 }

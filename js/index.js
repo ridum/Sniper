@@ -64,27 +64,29 @@ var analyze = function (type) {
                     // remove the content to preserve local css
                     document.getElementById("mainContent").innerHTML = "";
                     result = wordMappinng(URLText, lowerCaseKeyList);
-                }).done(function () {
-                    if (type == "analyze") {
-                        generateChart(result);
-                        changeAnalyzeButtonToCloseButton();
-                    } else {
-                        alert("you clicked generated button!");
-                    }
+                    representResult(type, result);
                 }).fail(function () {
                     alert("cannot aceess the website, try use text input");
                 });
         } else {
             input = input.toLowerCase();
             result = wordMappinng(input, lowerCaseKeyList);
-            if (type == "analyze") {
-                generateChart(result);
-                changeAnalyzeButtonToCloseButton();
-            } else {
-                alert("you clicked generated button!");
-            }
+            representResult(type, result);
         }
 
+    }
+}
+
+function representResult(type, result) {
+    if (type == "chart") {
+        generateChart(result);
+        changeAnalyzeButtonToCloseButton();
+    } else if (type == 'paragraph') {
+        //todo: put graph in here
+        clickGenerateButton();
+        alert("you clicked generated button!");
+    } else {
+        alert("error" + type);
     }
 }
 
@@ -112,17 +114,6 @@ function getSkillList() {
     }
 }
 
-function generateClick() {
-    document.getElementById("main").style.display = "none";
-    document.getElementById("result").style.display = "block";
-
-}
-
-function backClick() {
-    document.getElementById("result").style.display = "none";
-    document.getElementById("main").style.display = "block";
-}
-
 $(function () {
     //initialize google charts
     google.charts.load('current', {
@@ -133,7 +124,7 @@ $(function () {
     });
 
 
-    $("#analyze_button").click(analyze('analyze'));
-    $("#generate_button").click(analyze('generate'));
+    $("#analyze_button").click(analyze('chart'));
+    $("#generate_button").click(analyze('paragraph'));
     $("#back_button").click(backClick);
 });
