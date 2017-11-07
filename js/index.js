@@ -3,6 +3,13 @@ const DEFAULT_KEY_LIST = ["java", "c++", "javascript", "python", "c", "scala", "
 const DEFAULT_TRANSITION_WORDS = ["Moreover", "In addition", "Furthermore", "Additionally"];
 var keylist = [];
 
+$.ajaxPrefilter(function (options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+        options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+    }
+})
+
 function wordMappinng(string, list) {
     //filter all punctuation
     var words = string.replace(/[.,?!$%\^&\*;:{}=\-_`~()]|\+[^\+]/g, ' ');
