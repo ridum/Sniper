@@ -37,7 +37,7 @@ var analyze = function (type) {
     return function () {
         var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
 
-        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList();
+        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList().map((ele) => ele.name);
 
         if (!list) return;
 
