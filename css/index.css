@@ -47,6 +47,7 @@ html, body {
     margin-left: 0px;
     height: 90%;
     width: 100%;
+    resize: none;
 }
 
 .footButton {
