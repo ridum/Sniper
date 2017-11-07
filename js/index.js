@@ -2,13 +2,6 @@ var isUrl = false;
 const DEFAULT_KEY_LIST = ["java", "c++", "javascript", "python", "c", "scala", "CSS", "html"];
 var keylist = [];
 
-$.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-        options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
-    }
-})
-
 function wordMappinng(string, list) {
     //filter all punctuation
     var words = string.replace(/[.,?!$%\^&\*;:{}=\-_`~()]|\+[^\+]/g, ' ');
