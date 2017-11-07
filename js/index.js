@@ -1,6 +1,6 @@
 var isUrl = false;
 const DEFAULT_KEY_LIST = ["java", "c++", "javascript", "python", "c", "scala", "CSS", "html"];
-const DEFAULT_TRANSITION_WORDS = ["Moreover", "In addition", "Furthermore", "Additionally"]
+const DEFAULT_TRANSITION_WORDS = ["Moreover", "In addition", "Furthermore", "Additionally"];
 var keylist = [];
 
 function wordMappinng(string, list) {
