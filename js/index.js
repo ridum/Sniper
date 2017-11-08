@@ -38,6 +38,21 @@ var analyze = function (type) {
     return function () {
         var input = (isUrl) ? $("#urlText").val() : $("#pureText").val();
 
+        var googleSafeList = {
+          "client": {
+            "clientId":      "sniper",
+            "clientVersion": "1.0"
+          },
+          "threatInfo": {
+            "threatTypes":      ["MALWARE", "THREAT_TYPE_UNSPECIFIED", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION" ],
+            "platformTypes":    ["ANY_PLATFORM"],
+            "threatEntryTypes": ["URL"],
+            "threatEntries": [
+              {"url": input}
+            ]
+          }
+        };
+
         var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList().map((ele) => ele.name);
 
         if (!list) return;
@@ -48,21 +63,38 @@ var analyze = function (type) {
             return x.toLowerCase();
         });
         if (isUrl) {
-            $.get(
-                input,
-                function (response) {
-                    document.getElementById("mainContent").innerHTML = response;
+          $.ajax ({
+            url: "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDSUFaNYgWjgjhjABv3rOKLPunRycE-nhQ",
+            type: "POST",
+            data: JSON.stringify(googleSafeList),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(data){
+              if(JSON.stringify(data) === '{}'){
+                $.get(
+                    input,
+                    function (response) {
+                        document.getElementById("mainContent").innerHTML = response;
 
-                    //store the context
-                    var URLText = document.getElementById("mainContent").innerText.toLowerCase();
+                        //store the context
+                        var URLText = document.getElementById("mainContent").innerText.toLowerCase();
 
-                    // remove the content to preserve local css
-                    document.getElementById("mainContent").innerHTML = "";
-                    result = wordMappinng(URLText, lowerCaseKeyList);
-                    representResult(type, result);
-                }).fail(function () {
-                    alert("cannot aceess the website, try use text input");
-                });
+                        // remove the content to preserve local css
+                        document.getElementById("mainContent").innerHTML = "";
+                        result = wordMappinng(URLText, lowerCaseKeyList);
+                        representResult(type, result);
+                    }).fail(function () {
+                        alert("cannot aceess the website, try use text input");
+                    });
+              } else {
+                alert("the website you entered is unsafe")  
+              }
+            },
+            error: function (error) {
+              alert("security check error, check your Internet Connection")
+            }
+            });
+            
         } else {
             input = input.toLowerCase();
             result = wordMappinng(input, lowerCaseKeyList);
