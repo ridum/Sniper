@@ -12,7 +12,6 @@ function sortResult(result) {
         });
     });
     var res = orderList.sort(function (a, b) { return b.priority - a.priority }).map((e) => { return e.sentence });
-    console.log(res);
     return res;
 }
 
