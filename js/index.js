@@ -110,7 +110,7 @@ function representResult(type, result) {
         changeAnalyzeButtonToCloseButton();
     } else if (type == 'paragraph') {
         var sr = sortResult(result);
-        generateParagraph(sr);
+        putOnTextArea(generateParagraph(sr));
         clickGenerateButton();
     } else {
         alert("error" + type);

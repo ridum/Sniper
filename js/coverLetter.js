@@ -15,3 +15,18 @@ function sortResult(result) {
     console.log(res);
     return res;
 }
+
+function generateParagraph(list) {
+    var result = "";
+    listWithContent = list.filter((v) => { return v != '' });
+    listWithContent.forEach((ele, index) => {
+        if (index != 0) {
+            var transition = DEFAULT_TRANSITION_WORDS[Math.floor(Math.random() * DEFAULT_TRANSITION_WORDS.length)];
+            result += transition + ", ";
+            result += ele + " ";
+        } else {
+            result += ele + " ";
+        }
+    });
+    return result;
+}
