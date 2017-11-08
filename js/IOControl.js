@@ -94,12 +94,12 @@ function showChart(chart, data) {
 function clickGenerateButton() {
     document.getElementById("main").style.display = "none";
     document.getElementById("result").style.display = "block";
-
 }
 
 function backClick() {
     document.getElementById("result").style.display = "none";
     document.getElementById("main").style.display = "block";
+    document.getElementById("resultText").value = "";
 }
 
 function putOnTextArea(text) {
