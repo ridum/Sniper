@@ -103,7 +103,7 @@ function backClick() {
 }
 
 function generateParagraph(list) {
-    listWithContent = list.filter(v => v != '');
+    listWithContent = list.filter((v) => { return v != '' });
     var resultDiv = document.getElementById("resultText");
     listWithContent.forEach((ele, index) => {
         if (index != 0) {

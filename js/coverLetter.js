@@ -1,4 +1,4 @@
-function listfiltering(result) {
+function sortResult(result) {
     var listInput = getSkillList();
     listInput.forEach(function (e) {
         e.name = e.name.toLowerCase();
@@ -12,5 +12,6 @@ function listfiltering(result) {
         });
     });
     var res = orderList.sort(function (a, b) { return b.priority - a.priority }).map((e) => { return e.sentence });
+    console.log(res);
     return res;
 }

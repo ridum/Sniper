@@ -109,10 +109,9 @@ function representResult(type, result) {
         generateChart(result);
         changeAnalyzeButtonToCloseButton();
     } else if (type == 'paragraph') {
-        var sr = sortResult(result)
+        var sr = sortResult(result);
         generateParagraph(sr);
         clickGenerateButton();
-        alert("you clicked generated button!");
     } else {
         alert("error" + type);
     }
