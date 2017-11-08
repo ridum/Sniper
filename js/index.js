@@ -4,7 +4,7 @@ const DEFAULT_TRANSITION_WORDS = ["Moreover", "In addition", "Furthermore", "Add
 var keylist = [];
 
 $.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
+    if (options.crossDomain && jQuery.support.cors && options.type === "get") {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
         options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
     }
