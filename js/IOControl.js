@@ -102,16 +102,16 @@ function backClick() {
     document.getElementById("main").style.display = "block";
 }
 
-function generateResult(list) {
-    listWithContent = list.filter(v=>v!='');
+function generateParagraph(list) {
+    listWithContent = list.filter(v => v != '');
     var resultDiv = document.getElementById("resultText");
     listWithContent.forEach((ele, index) => {
-      if(index != 0){
-        var transition = DEFAULT_TRANSITION_WORDS[Math.floor(Math.random() * DEFAULT_TRANSITION_WORDS.length)];
-        resultDiv.value += transition + ", ";
-        resultDiv.value += ele + " ";
-      } else {
-        resultDiv.value += ele + " ";
-      }
+        if (index != 0) {
+            var transition = DEFAULT_TRANSITION_WORDS[Math.floor(Math.random() * DEFAULT_TRANSITION_WORDS.length)];
+            resultDiv.value += transition + ", ";
+            resultDiv.value += ele + " ";
+        } else {
+            resultDiv.value += ele + " ";
+        }
     });
 }
