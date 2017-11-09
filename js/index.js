@@ -154,4 +154,13 @@ $(function () {
     $("#analyze_button").click(analyze('chart'));
     $("#generate_button").click(analyze('paragraph'));
     $("#back_button").click(backClick);
+
+    //put the saved list in the right side if possible
+    if (getList()) {
+        console.log(getList());
+        //TODO : put the list back to the div 
+    }
+    window.onbeforeunload = saveList;
+
+
 });
