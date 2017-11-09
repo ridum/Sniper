@@ -149,11 +149,7 @@ $(function () {
     google.charts.setOnLoadCallback(function () {
         Google_loaded = true;
     });
-    
-    // Ignore all JavaScript errors in console   
-    window.onerror = function() {
-        return true;
-    }
+
 
     $("#analyze_button").click(analyze('chart'));
     $("#generate_button").click(analyze('paragraph'));
