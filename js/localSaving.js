@@ -1,7 +1,6 @@
 function saveList() {
-
     if (window.localStorage) {
-        window.localStorage.setItem("skillList", JSON.stringify(getSkillList()));
+        window.localStorage.setItem("skillList", JSON.stringify(getSkillList(true)));
     }
 }
 
