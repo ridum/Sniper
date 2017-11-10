@@ -53,7 +53,7 @@ var analyze = function (type) {
             }
         };
 
-        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList().map((ele) => ele.name);
+        var list = (document.getElementById('default_list_indicator').checked) ? DEFAULT_KEY_LIST : getSkillList(false).map((ele) => ele.name);
 
         if (!list) return;
 
@@ -117,13 +117,14 @@ function representResult(type, result) {
     }
 }
 
-function getSkillList() {
+function getSkillList(isAutoSave) {
     if ($("#skillList").children().length > 0) {
         let result = [];
         let empty = false;
         $("#skillList").children().each(function (index) {
             if ($(this).children(".skillName")[0].value === "") {
-                alert("Error: your Skill number " + (index + 1) + " have empty skill name");
+                if (!isAutoSave)
+                    alert("Error: your Skill number " + (index + 1) + " have empty skill name");
                 empty = true;
                 return;
             }
@@ -136,7 +137,8 @@ function getSkillList() {
         if (empty) return false;
         return result;
     } else {
-        alert("Error: please create at least one skill");
+        if (!isAutoSave)
+            alert("Error: please create at least one skill");
         return false;
     }
 }
