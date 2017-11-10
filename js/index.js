@@ -158,7 +158,7 @@ $(function () {
     $("#back_button").click(backClick);
 
     //put the saved list in the right side if possible
-    if (getList()) {
+    if (getList() != "false") {
         console.log(getList());
         generateSkillList(getList());
         //TODO : put the list back to the div 
