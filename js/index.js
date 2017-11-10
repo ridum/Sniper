@@ -160,6 +160,7 @@ $(function () {
     //put the saved list in the right side if possible
     if (getList()) {
         console.log(getList());
+        generateSkillList(getList());
         //TODO : put the list back to the div 
     }
     window.onbeforeunload = saveList;
