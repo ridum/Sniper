@@ -110,6 +110,7 @@ function putOnTextArea(text) {
 }
 
 function generateSkillList(list) {
+    list = JSON.parse(list);
     var skillList = document.getElementById("skillList")
     skillList.innerHTML = "";
     skillList.style.display = "none";
@@ -120,8 +121,9 @@ function generateSkillList(list) {
         list.className = "list-group-item";
         list.innerHTML = SKILL_ROW_HTML;
         skillList.appendChild(list);
+        list.style.display = "";
     }
-    list.foreach((ele, index) =>{
+    list.forEach((ele, index) =>{
         $(skillList.children[index]).children(".skillName").val(ele.name);
         $(skillList.children[index]).children(".skillTextArea").val(ele.descr);
     });
